@@ -28,9 +28,9 @@ const Carousel = () => {
 
     return (
         <div className="carousel">
-            <Arrow direction="<" />
+            <Arrow id="left" value="<" />
             <Photo source={photoOfTheDay.url} explanation={photoOfTheDay.title} />
-            <Arrow direction=">" />
+            <Arrow id="right" value=">" />
         </div>
     );
 };

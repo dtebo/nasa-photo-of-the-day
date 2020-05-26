@@ -2,8 +2,8 @@ import React from 'react';
 
 const Arrow = (props) => {
     return (
-        <div className="arrow">
-            <span>{props.direction}</span>
+        <div className="arrow" id={props.id} >
+            <span>{props.value}</span>
         </div>
     );
 };
