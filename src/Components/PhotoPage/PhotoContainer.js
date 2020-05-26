@@ -1,5 +1,6 @@
 import React from 'react';
 
+import './PhotoPage.css';
 import Carousel from './Carousel';
 
 const PhotoContainer = () => {

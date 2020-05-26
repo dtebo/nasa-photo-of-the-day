@@ -5,7 +5,7 @@ import Photo from './Photo';
 import Arrow from './Arrow';
 
 const Carousel = () => {
-    const [data, setData] = useState({});
+    const [photoOfTheDay, setPhotoOfTheDay] = useState();
 
     useEffect(() => {
         // Get our data
@@ -18,14 +18,18 @@ const Carousel = () => {
         // axios.get(`${base_url}?date=${formattedDate}&api_key=${API_KEY}`)
         //      .then((resp) => {
         //         console.log(resp);
-        //         setData(resp.data);
+                
+        //         setPhotoOfTheDay(resp.data);
         //      });
     }, []);
+
+    // If we haven't received our data
+    if(!photoOfTheDay) return <h3>Loading...</h3>;
 
     return (
         <div className="carousel">
             <Arrow direction="<" />
-            <Photo source={data.hdurl} explanation={data.title} />
+            <Photo source={photoOfTheDay.hdurl} explanation={photoOfTheDay.title} />
             <Arrow direction=">" />
         </div>
     );

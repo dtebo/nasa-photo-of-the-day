@@ -5,7 +5,7 @@ import Title from './Title';
 
 const Header = () => {
     return (
-        <div className="app-header">
+        <div className="App-header">
             <Logo />
             <Title />
         </div>
