@@ -10,5 +10,6 @@
 @media (prefers-color-scheme: dark){
     .photo-container{
         background-color: rgb(67, 70, 77);
+        color: rgb(216, 216, 216);
     }
 }
