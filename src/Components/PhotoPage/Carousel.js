@@ -15,12 +15,12 @@ const Carousel = () => {
 
         const API_KEY = "DEMO_KEY";
 
-        // axios.get(`${base_url}?date=${formattedDate}&api_key=${API_KEY}`)
-        //      .then((resp) => {
-        //         console.log(resp);
+        axios.get(`${base_url}?date=${formattedDate}&api_key=${API_KEY}`)
+             .then((resp) => {
+                console.log(resp);
                 
-        //         setPhotoOfTheDay(resp.data);
-        //      });
+                setPhotoOfTheDay(resp.data);
+             });
     }, []);
 
     // If we haven't received our data
@@ -29,7 +29,7 @@ const Carousel = () => {
     return (
         <div className="carousel">
             <Arrow direction="<" />
-            <Photo source={photoOfTheDay.hdurl} explanation={photoOfTheDay.title} />
+            <Photo source={photoOfTheDay.url} explanation={photoOfTheDay.title} />
             <Arrow direction=">" />
         </div>
     );

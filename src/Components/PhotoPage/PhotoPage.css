@@ -2,9 +2,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 100vw;
+    height: calc(100% - 96px);
     background-color: rgb(231, 231, 231);
+}
+
+.photo img{
+    height: 450px;
+    width: 600px;
 }
 
 @media (prefers-color-scheme: dark){
