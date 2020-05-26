@@ -2,7 +2,7 @@ import React from 'react';
 
 const Logo = () => {
     return (
-        <div>
+        <div className="app-logo">
             <img src="" alt="app logo" />
         </div>
     );

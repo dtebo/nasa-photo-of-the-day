@@ -2,7 +2,7 @@ import React from 'react';
 
 const Title = () => {
     return (
-        <div>
+        <div className="app-title">
             <span className="title">APOD</span>
         </div>
     );
