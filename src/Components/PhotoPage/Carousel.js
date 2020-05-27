@@ -20,12 +20,12 @@ const Carousel = () => {
 
     useEffect(() => {
         // Get our data
-        // axios.get(`${base_url}?date=2020-05-${day}&api_key=${API_KEY}`)
-        //      .then((resp) => {
-        //         console.log(resp);
+        axios.get(`${base_url}?date=2020-05-${day}&api_key=${API_KEY}`)
+             .then((resp) => {
+                // console.log(resp);
                 
-        //         setPhotoOfTheDay(resp.data);
-        //      });
+                setPhotoOfTheDay(resp.data);
+             });
     }, [day]);
 
     function changeImage(direction){
