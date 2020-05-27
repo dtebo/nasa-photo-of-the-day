@@ -1,8 +1,14 @@
 import React, {useState, useEffect} from 'react';
+import styled from 'styled-components';
+
 import axios from 'axios';
 
 import Photo from './Photo';
 import Arrow from './Arrow';
+
+const StyledCarousel = styled.div`
+    width: 90%;
+`;
 
 const Carousel = () => {
     const [photoOfTheDay, setPhotoOfTheDay] = useState();
@@ -14,12 +20,12 @@ const Carousel = () => {
 
     useEffect(() => {
         // Get our data
-        axios.get(`${base_url}?date=2020-05-${day}&api_key=${API_KEY}`)
-             .then((resp) => {
-                console.log(resp);
+        // axios.get(`${base_url}?date=2020-05-${day}&api_key=${API_KEY}`)
+        //      .then((resp) => {
+        //         console.log(resp);
                 
-                setPhotoOfTheDay(resp.data);
-             });
+        //         setPhotoOfTheDay(resp.data);
+        //      });
     }, [day]);
 
     function changeImage(direction){
@@ -40,11 +46,11 @@ const Carousel = () => {
     if(!photoOfTheDay) return <h3>Loading...</h3>;
 
     return (
-        <div className="carousel">
+        <StyledCarousel>
             <Arrow id="left" value="<" changeImage={changeImage} />
             <Photo source={photoOfTheDay.url} explanation={photoOfTheDay.title} />
             <Arrow id="right" value=">" changeImage={changeImage} />
-        </div>
+        </StyledCarousel>
     );
 };
 
