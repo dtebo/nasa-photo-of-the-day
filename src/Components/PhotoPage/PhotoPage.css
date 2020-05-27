@@ -26,6 +26,10 @@
     top: 50%;
 }
 
+.arrow:hover{
+    cursor: pointer;
+}
+
 .arrow span{
     display: inline-block;
     width: 100%;

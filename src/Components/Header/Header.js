@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Header.css';
+
 import Logo from './Logo';
 import Title from './Title';
 
