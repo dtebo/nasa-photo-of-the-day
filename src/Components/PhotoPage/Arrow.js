@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Button from '@material-ui/core/Button';
 
 const ArrowContainer = ({ className, id, onClick, children}) => (
     <div className={className} id={id} onClick={onClick}>
@@ -28,11 +29,14 @@ const StyledArrowSpan = styled.span`
 
 const Arrow = (props) => {
     return (
-        <StyledArrow
+        <Button
              id={props.id}
-             onClick={(e) => props.changeImage(props.id)} >
+             className="arrow"
+             onClick={(e) => props.changeImage(props.id)}
+             color="primary"
+             variant="contained" >
             <StyledArrowSpan>{props.value}</StyledArrowSpan>
-        </StyledArrow>
+        </Button>
     );
 };
 

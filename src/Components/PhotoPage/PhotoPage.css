@@ -5,30 +5,30 @@
     max-width: 1200px;
 } */
 
-/* .arrow{
+button.arrow{
     position: fixed;
     background-color: rgba(0, 0, 0, 0.438);
     padding: 20px;
     font: bold 2.5rem 'segoe';
     top: 50%;
-} */
+}
 
-/* .arrow:hover{
+.arrow:hover{
     cursor: pointer;
-} */
+}
 
 /* .arrow span{
     display: inline-block;
     width: 100%;
 } */
 
-/* #left{
+#left{
     left: 10px;
 }
 
 #right{
     right: 10px;
-} */
+}
 
 @media (prefers-color-scheme: dark){
     .photo-container{
