@@ -6,6 +6,7 @@ import Arrow from './Arrow';
 
 const Carousel = () => {
     const [photoOfTheDay, setPhotoOfTheDay] = useState();
+    const [day, setDay] = useState((new Date().getDate()));
 
     const base_url = "https://api.nasa.gov/planetary/apod";
 
@@ -13,35 +14,26 @@ const Carousel = () => {
 
     useEffect(() => {
         // Get our data
-        let imgDate = new Date();
-        let formattedDate = `${imgDate.getFullYear()}-${imgDate.getMonth() + 1}-${imgDate.getDate()}`;
-
-        axios.get(`${base_url}?date=${formattedDate}&api_key=${API_KEY}`)
+        axios.get(`${base_url}?date=2020-05-${day}&api_key=${API_KEY}`)
              .then((resp) => {
                 console.log(resp);
                 
                 setPhotoOfTheDay(resp.data);
              });
-    }, []);
+    }, [day]);
 
-    let updatedDate = new Date();
-    
     function changeImage(direction){
         if(direction === 'left'){
-            updatedDate.setDate(updatedDate.getDate() - 1);
+            setDay(day - 1);
         }
-        else{
-            updatedDate.setDate(updatedDate.getDate() + 1);
+        else if(direction === 'right'){
+            let today = new Date();
+
+            // Prevent from trying to navigate to future dates
+            if(day < today.getDate()){
+                setDay(day + 1);
+            }
         }
-
-        let dateString = `${updatedDate.getFullYear()}-${updatedDate.getMonth() + 1}-${updatedDate.getDate()}`;
-
-        axios.get(`${base_url}?date=${dateString}&api_key=${API_KEY}`)
-                .then((resp) => {
-                    console.log(resp);
-
-                    setPhotoOfTheDay(resp.data);
-                });
     }
 
     // If we haven't received our data
