@@ -51,7 +51,7 @@ const Carousel = (props) => {
                 if(month !== 1){
                     setMonth(month - 1);
 
-                    let endOfPrevMonth = monthsAndNumDays[month].numDays; // Current month's last day
+                    let endOfPrevMonth = monthsAndNumDays[month - 2].numDays; // Current month's last day
 
                     setDay(endOfPrevMonth);
                 }
@@ -64,7 +64,7 @@ const Carousel = (props) => {
 
                     setMonth(12);
 
-                    let endOfPrevMonth = monthsAndNumDays[month].numDays;
+                    let endOfPrevMonth = monthsAndNumDays[month - 2].numDays;
 
                     setDay(endOfPrevMonth);
                 }

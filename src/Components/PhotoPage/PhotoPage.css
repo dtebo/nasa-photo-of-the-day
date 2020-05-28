@@ -10,6 +10,7 @@ button.arrow{
     background-color: rgba(0, 0, 0, 0.438);
     padding: 20px;
     font: bold 2.5rem 'segoe';
+    top: 45%;
 }
 
 .arrow:hover{
