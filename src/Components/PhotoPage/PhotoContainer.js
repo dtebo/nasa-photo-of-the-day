@@ -10,7 +10,7 @@ const StyledPhotoContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(100% - 96px);
+    height: 100%;
     background-color: rgb(231, 231, 231);
 `;
 

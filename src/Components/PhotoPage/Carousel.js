@@ -24,15 +24,18 @@ const Carousel = (props) => {
 
     useEffect(() => {
         // Get our data
-        axios.get(`${base_url}?date=${year}-${month}-${day}&api_key=${API_KEY}`)
-             .then((resp) => {
-                // console.log(resp);
+        // axios.get(`${base_url}?date=${year}-${month}-${day}&api_key=${API_KEY}`)
+        //      .then((resp) => {
+        //         // console.log(resp);
                 
-                setPhotoOfTheDay(resp.data);
-             });
+        //         setPhotoOfTheDay(resp.data);
+        //      });
     }, [day, month, year]);
 
     function changeImage(direction){
+        // TODO: Add year traversal and leap year calculation
+        console.log(year % 4 === 0);
+
         if(direction === 'left'){
             if(day !== 1){ // Day of the month can't be less than 1
                 setDay(day - 1);
@@ -45,6 +48,19 @@ const Carousel = (props) => {
                     setMonth(month - 1);
 
                     let endOfPrevMonth = monthsAndNumDays[month].numDays; // Current month's last day
+
+                    setDay(endOfPrevMonth);
+                }
+                else{
+                    // Since we have now fallen into another year,
+                    // set the month to the last month of the year
+                    // and the days to the number of days in the
+                    // last month of the previous year.
+                    setYear(year - 1);
+
+                    setMonth(12);
+
+                    let endOfPrevMonth = monthsAndNumDays[month].numDays;
 
                     setDay(endOfPrevMonth);
                 }
