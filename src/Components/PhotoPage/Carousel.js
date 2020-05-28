@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 import Photo from './Photo';
+import Video from './Video';
 import Arrow from './Arrow';
 
 import { monthsAndNumDays } from './MonthAndNumDays';
@@ -24,12 +25,12 @@ const Carousel = (props) => {
 
     useEffect(() => {
         // Get our data
-        // axios.get(`${base_url}?date=${year}-${month}-${day}&api_key=${API_KEY}`)
-        //      .then((resp) => {
-        //         // console.log(resp);
+        axios.get(`${base_url}?date=${year}-${month}-${day}&api_key=${API_KEY}`)
+             .then((resp) => {
+                // console.log(resp);
                 
-        //         setPhotoOfTheDay(resp.data);
-        //      });
+                setPhotoOfTheDay(resp.data);
+             });
     }, [day, month, year]);
 
     function changeImage(direction){
@@ -82,7 +83,7 @@ const Carousel = (props) => {
     return (
         <StyledCarousel>
             <Arrow id="left" value="<" changeImage={changeImage} />
-            <Photo source={photoOfTheDay.url} explanation={photoOfTheDay.title} />
+            {photoOfTheDay.media_type === 'video' ? <Video source={photoOfTheDay.url} /> : <Photo source={photoOfTheDay.url} explanation={photoOfTheDay.title} />}
             <Arrow id="right" value=">" changeImage={changeImage} />
         </StyledCarousel>
     );
