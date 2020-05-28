@@ -10,7 +10,10 @@ import Arrow from './Arrow';
 import { monthsAndNumDays } from './MonthAndNumDays';
 
 const StyledCarousel = styled.div`
-    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 `;
 
 const Carousel = (props) => {
@@ -25,7 +28,8 @@ const Carousel = (props) => {
 
     useEffect(() => {
         // Get our data
-        axios.get(`${base_url}?date=${year}-${month}-${day}&api_key=${API_KEY}`)
+        axios.get(`${base_url}?date=${year}-${month}-${day}&api_key=${API_KEY}`,
+                  {headers: {'accept': "application/json", 'X-Content-Type-Options': "nosniff"}})
              .then((resp) => {
                 // console.log(resp);
                 
@@ -35,7 +39,6 @@ const Carousel = (props) => {
 
     function changeImage(direction){
         // TODO: Add year traversal and leap year calculation
-        console.log(year % 4 === 0);
 
         if(direction === 'left'){
             if(day !== 1){ // Day of the month can't be less than 1

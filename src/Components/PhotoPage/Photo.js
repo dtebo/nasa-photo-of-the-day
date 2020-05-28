@@ -3,9 +3,7 @@ import styled from 'styled-components';
 
 const StyledPhoto = styled.img`
     height: 680px;
-    width: 80%;
-    min-width: 500px;
-    max-width: 1200px;
+    width: 100%;
 `;
 
 const Photo = (props) => {
