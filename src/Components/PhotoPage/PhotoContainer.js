@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 
 import './PhotoPage.css';
 import Carousel from './Carousel';
-
+import PhotoDay from './PhotoDay';
 
 const StyledPhotoContainer = styled.div`
     display: flex;
@@ -15,9 +15,16 @@ const StyledPhotoContainer = styled.div`
 `;
 
 const PhotoContainer = () => {
+    const [currentDate, setCurrentDate] = useState();
+
+    function getDate(d){
+        setCurrentDate(d);
+    }
+
     return (
         <StyledPhotoContainer>
-            <Carousel />
+            <PhotoDay currentDate={currentDate} />
+            <Carousel getDate={getDate} />
         </StyledPhotoContainer>
     )
 };

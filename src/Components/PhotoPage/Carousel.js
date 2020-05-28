@@ -6,13 +6,17 @@ import axios from 'axios';
 import Photo from './Photo';
 import Arrow from './Arrow';
 
+import { monthsAndNumDays } from './MonthAndNumDays';
+
 const StyledCarousel = styled.div`
     width: 90%;
 `;
 
-const Carousel = () => {
+const Carousel = (props) => {
     const [photoOfTheDay, setPhotoOfTheDay] = useState();
     const [day, setDay] = useState((new Date().getDate()));
+    const [month, setMonth] = useState((new Date().getMonth() + 1));
+    const [year, setYear] = useState((new Date().getFullYear()));
 
     const base_url = "https://api.nasa.gov/planetary/apod";
 
@@ -20,17 +24,31 @@ const Carousel = () => {
 
     useEffect(() => {
         // Get our data
-        axios.get(`${base_url}?date=2020-05-${day}&api_key=${API_KEY}`)
+        axios.get(`${base_url}?date=${year}-${month}-${day}&api_key=${API_KEY}`)
              .then((resp) => {
                 // console.log(resp);
                 
                 setPhotoOfTheDay(resp.data);
              });
-    }, [day]);
+    }, [day, month, year]);
 
     function changeImage(direction){
         if(direction === 'left'){
-            setDay(day - 1);
+            if(day !== 1){ // Day of the month can't be less than 1
+                setDay(day - 1);
+            }
+            else{
+                // Since we have now fallen into another month,
+                // set the number of days to the number of days
+                // in the previous month.
+                if(month !== 1){
+                    setMonth(month - 1);
+
+                    let endOfPrevMonth = monthsAndNumDays[month].numDays; // Current month's last day
+
+                    setDay(endOfPrevMonth);
+                }
+            }
         }
         else if(direction === 'right'){
             let today = new Date();
