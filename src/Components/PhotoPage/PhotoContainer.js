@@ -5,14 +5,16 @@ import './PhotoPage.css';
 import Carousel from './Carousel';
 import PhotoDay from './PhotoDay';
 
-const StyledPhotoContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    background-color: rgb(231, 231, 231);
-`;
+import Container from '@material-ui/core/Container';
+
+// const StyledPhotoContainer = styled.div`
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     height: 100%;
+//     background-color: rgb(231, 231, 231);
+// `;
 
 const PhotoContainer = () => {
     const [currentDate, setCurrentDate] = useState();
@@ -22,10 +24,12 @@ const PhotoContainer = () => {
     }
 
     return (
-        <StyledPhotoContainer>
+        // <StyledPhotoContainer>
+        <Container>
             <PhotoDay currentDate={currentDate} />
             <Carousel getDate={getDate} />
-        </StyledPhotoContainer>
+        </Container>
+        // </StyledPhotoContainer>
     )
 };
 
