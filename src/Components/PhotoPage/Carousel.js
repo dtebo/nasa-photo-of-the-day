@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 import Photo from './Photo';
+import PhotoDay from './PhotoDay';
 import Video from './Video';
 import Arrow from './Arrow';
 
@@ -21,6 +22,8 @@ const Carousel = (props) => {
     const [day, setDay] = useState((new Date().getDate()));
     const [month, setMonth] = useState((new Date().getMonth() + 1));
     const [year, setYear] = useState((new Date().getFullYear()));
+
+    let fullDate = `${monthsAndNumDays[month - 1].monthName} ${day}, ${year}`;
 
     const base_url = "https://api.nasa.gov/planetary/apod";
 
@@ -84,11 +87,14 @@ const Carousel = (props) => {
     if(!photoOfTheDay) return <h3>Loading...</h3>;
 
     return (
-        <StyledCarousel>
-            <Arrow id="left" value="<" changeImage={changeImage} />
-            {photoOfTheDay.media_type === 'video' ? <Video source={photoOfTheDay.url} /> : <Photo source={photoOfTheDay.url} explanation={photoOfTheDay.title} />}
-            <Arrow id="right" value=">" changeImage={changeImage} />
-        </StyledCarousel>
+        <div>
+            <PhotoDay currentDay={fullDate} />
+            <StyledCarousel>
+                <Arrow id="left" value="<" changeImage={changeImage} />
+                {photoOfTheDay.media_type === 'video' ? <Video source={photoOfTheDay.url} /> : <Photo source={photoOfTheDay.url} explanation={photoOfTheDay.title} />}
+                <Arrow id="right" value=">" changeImage={changeImage} />
+            </StyledCarousel>
+        </div>
     );
 };
 
