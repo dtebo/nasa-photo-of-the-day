@@ -19,6 +19,7 @@ const StyledCarousel = styled.div`
 
 const Carousel = (props) => {
     const [photoOfTheDay, setPhotoOfTheDay] = useState();
+    const [loading, setLoading] = useState(true);
     const [day, setDay] = useState((new Date().getDate()));
     const [month, setMonth] = useState((new Date().getMonth() + 1));
     const [year, setYear] = useState((new Date().getFullYear()));
@@ -37,6 +38,8 @@ const Carousel = (props) => {
                 // console.log(resp);
                 
                 setPhotoOfTheDay(resp.data);
+
+                setLoading(false);
              });
     }, [day, month, year]);
 
@@ -91,7 +94,7 @@ const Carousel = (props) => {
             <PhotoDay currentDay={fullDate} />
             <StyledCarousel>
                 <Arrow id="left" value="<" changeImage={changeImage} />
-                {photoOfTheDay.media_type === 'video' ? <Video source={photoOfTheDay.url} /> : <Photo source={photoOfTheDay.url} explanation={photoOfTheDay.title} />}
+                {photoOfTheDay.media_type === 'video' ? <Video source={photoOfTheDay.url} /> : <Photo source={photoOfTheDay.hdurl} explanation={photoOfTheDay.title} />}
                 <Arrow id="right" value=">" changeImage={changeImage} />
             </StyledCarousel>
         </div>

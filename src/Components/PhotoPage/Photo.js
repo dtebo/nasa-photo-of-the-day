@@ -12,6 +12,7 @@ const Photo = (props) => {
     return (
         <div className="photo">
             <StyledPhoto src={props.source} alt={props.explanation} />
+            <ExplanationCard explanation={props.explanation} />
         </div>
     );
 };
