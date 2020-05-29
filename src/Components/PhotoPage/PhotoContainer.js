@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import styled from 'styled-components';
+import React from 'react';
 
 import './PhotoPage.css';
 import Carousel from './Carousel';
@@ -18,7 +17,7 @@ import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        marginTop: '20px'
+        height: "100%"
     }
 }));
 
@@ -28,7 +27,7 @@ const PhotoContainer = () => {
     return (
         // <StyledPhotoContainer>
         <Grid container
-              className={classes.root}
+              className={`${classes.root} photo-container`}
               direction="row"
               justify="center"
               alignItems="center">

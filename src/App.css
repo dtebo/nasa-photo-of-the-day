@@ -1,12 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Play:wght@400;700&family=Roboto&family=Spartan:wght@700&display=swap');
 
-*{
-  box-sizing: border-box;
-}
-
 .App {
   text-align: center;
   height: 100%;
+  box-sizing: border-box;
 }
 
 .App-logo {
@@ -39,7 +36,7 @@
 .App-header {
   padding: 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
