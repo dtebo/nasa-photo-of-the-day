@@ -13,6 +13,10 @@ button.arrow{
     top: 45%;
 }
 
+.photo-day{
+    font: bold 1rem 'Spartan', Verdana;
+}
+
 .arrow:hover{
     cursor: pointer;
 }

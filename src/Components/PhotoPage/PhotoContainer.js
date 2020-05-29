@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import './PhotoPage.css';
 import Carousel from './Carousel';
-import PhotoDay from './PhotoDay';
 
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core';
