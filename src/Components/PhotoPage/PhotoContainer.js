@@ -5,7 +5,8 @@ import './PhotoPage.css';
 import Carousel from './Carousel';
 import PhotoDay from './PhotoDay';
 
-import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core';
 
 // const StyledPhotoContainer = styled.div`
 //     display: flex;
@@ -16,7 +17,15 @@ import Container from '@material-ui/core/Container';
 //     background-color: rgb(231, 231, 231);
 // `;
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        marginTop: '20px'
+    }
+}));
+
 const PhotoContainer = () => {
+    const classes = useStyles();
+
     const [currentDate, setCurrentDate] = useState();
 
     function getDate(d){
@@ -25,10 +34,15 @@ const PhotoContainer = () => {
 
     return (
         // <StyledPhotoContainer>
-        <Container>
+        <Grid container
+              className={classes.root}
+              direction="row"
+              justify="center"
+              alignItems="center">
+            
             <PhotoDay currentDate={currentDate} />
             <Carousel getDate={getDate} />
-        </Container>
+        </Grid>
         // </StyledPhotoContainer>
     )
 };
