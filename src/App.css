@@ -1,5 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Play:wght@400;700&family=Roboto&family=Spartan:wght@700&display=swap');
+
+*{
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
+  height: 100%;
 }
 
 .App-logo {
@@ -13,9 +20,24 @@
   }
 }
 
+@media (prefers-color-scheme: light){
+  .App-header {
+    background-color: #262931;
+  }
+}
+
+@media (prefers-color-scheme: dark){
+  .App-header {
+    background-color: #262931;
+  }
+
+  .App-link {
+    color: #11252a;
+  }
+}
+
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;

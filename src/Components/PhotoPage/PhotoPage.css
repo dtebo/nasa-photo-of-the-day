@@ -1,0 +1,42 @@
+/* .photo img{
+    height: 680px;
+    width: 80%;
+    min-width: 500px;
+    max-width: 1200px;
+} */
+
+button.arrow{
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.438);
+    padding: 20px;
+    font: bold 2.5rem 'segoe';
+    top: 45%;
+}
+
+.photo-day{
+    font: bold 1rem 'Spartan', Verdana;
+}
+
+.arrow:hover{
+    cursor: pointer;
+}
+
+/* .arrow span{
+    display: inline-block;
+    width: 100%;
+} */
+
+#left{
+    left: 10px;
+}
+
+#right{
+    right: 10px;
+}
+
+@media (prefers-color-scheme: dark){
+    .photo-container{
+        background-color: rgb(67, 70, 77);
+        color: rgb(216, 216, 216);
+    }
+}
