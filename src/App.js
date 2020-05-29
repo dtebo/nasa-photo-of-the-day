@@ -34,6 +34,8 @@ function App() {
   //   requestAnimationFrame(render);
   // }
 
+  document.body.style.boxSizing = 'border-box';
+
   return (
     <div className="App">
       <Header />
