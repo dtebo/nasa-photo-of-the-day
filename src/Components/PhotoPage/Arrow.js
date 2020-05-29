@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 // import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 
@@ -28,10 +28,19 @@ import Button from '@material-ui/core/Button';
 // `;
 
 const Arrow = (props) => {
+    const [verticalPosition, setVerticalPosition] = useState(window.innerHeight / 2);
+
+    useEffect(() => {
+        window.addEventListener('resize', (e) => {
+            setVerticalPosition(window.innerHeight / 2);
+        });
+    }, []);
+
     return (
         <Button
              id={props.id}
              className="arrow"
+             style={{top: `${verticalPosition}px`}}
              onClick={(e) => props.changeImage(props.id)}
              color="primary"
              variant="contained" >

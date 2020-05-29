@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import ExplanationCard from './ExplanationCard';
+
 const StyledPhoto = styled.img`
     height: 680px;
     width: 100%;
