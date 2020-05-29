@@ -26,12 +26,6 @@ const useStyles = makeStyles((theme) => ({
 const PhotoContainer = () => {
     const classes = useStyles();
 
-    const [currentDate, setCurrentDate] = useState();
-
-    function getDate(d){
-        setCurrentDate(d);
-    }
-
     return (
         // <StyledPhotoContainer>
         <Grid container
@@ -39,9 +33,7 @@ const PhotoContainer = () => {
               direction="row"
               justify="center"
               alignItems="center">
-            
-            <PhotoDay currentDate={currentDate} />
-            <Carousel getDate={getDate} />
+            <Carousel />
         </Grid>
         // </StyledPhotoContainer>
     )
