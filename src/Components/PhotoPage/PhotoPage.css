@@ -27,11 +27,11 @@ button.arrow{
 } */
 
 #left{
-    left: 10px;
+    left: 5px;
 }
 
 #right{
-    right: 10px;
+    right: 20px;
 }
 
 @media (prefers-color-scheme: dark){
