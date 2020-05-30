@@ -19,7 +19,6 @@ const StyledCarousel = styled.div`
 
 const Carousel = (props) => {
     const [photoOfTheDay, setPhotoOfTheDay] = useState();
-    const [loading, setLoading] = useState(true);
     const [day, setDay] = useState((new Date().getDate()));
     const [month, setMonth] = useState((new Date().getMonth() + 1));
     const [year, setYear] = useState((new Date().getFullYear()));
@@ -28,7 +27,7 @@ const Carousel = (props) => {
 
     const base_url = "https://api.nasa.gov/planetary/apod";
 
-    const API_KEY = "xrHz4dfjbuIz8cxMQaT4dcivoMQftq4PJueOxX9s";
+    const API_KEY = "tgbpmipKwid4tOS5yaeCwSsq0xcqh7nav5MkZWfq";
 
     useEffect(() => {
         // Get our data
@@ -38,8 +37,6 @@ const Carousel = (props) => {
                 // console.log(resp);
                 
                 setPhotoOfTheDay(resp.data);
-
-                setLoading(false);
              });
     }, [day, month, year]);
 

@@ -10,20 +10,26 @@ const StyledPhoto = styled.img`
 
 const Photo = (props) => {
     const [loading, setLoading] = useState(true);
-    const [source, setSource] = useState("");
+    // const [source, setSource] = useState("");
 
     useEffect(() => {
-        if(props.source === source){
-            setLoading(false);
-        }
-        else{
-            setLoading(true);
-        }
+        // if(props.source === source){
+        //     setLoading(false);
+        // }
+        // else{
+        //     setLoading(true);
+        // }
 
-        setSource(props.source);
-    },[loading, props.source, source]);
+        // setSource(props.source);
 
-    if(loading) return <h3>Loading...</h3>;
+        let img = document.querySelector('.photo img');
+
+        img.addEventListener('load', (e) => {
+            img.src = props.source;
+        });
+    },[props.source]);
+
+    // if(loading) return <h3>Loading...</h3>;
 
     return (
         <div className="photo">
