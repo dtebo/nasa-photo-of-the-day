@@ -22,6 +22,7 @@ const Carousel = (props) => {
     const [day, setDay] = useState((new Date().getDate()));
     const [month, setMonth] = useState((new Date().getMonth() + 1));
     const [year, setYear] = useState((new Date().getFullYear()));
+    const [imgLoading, setImgLoading] = useState(true);
 
     let fullDate = `${monthsAndNumDays[month - 1].monthName} ${day}, ${year}`;
 
@@ -34,13 +35,21 @@ const Carousel = (props) => {
         axios.get(`${base_url}?date=${year}-${month}-${day}&api_key=${API_KEY}`,
                   {headers: {'accept': "application/json", 'X-Content-Type-Options': "nosniff"}})
              .then((resp) => {
-                // console.log(resp);
-                
                 setPhotoOfTheDay(resp.data);
+                setImgLoading(false);
              });
     }, [day, month, year]);
 
     function changeImage(direction){
+        let prevUrl = "";
+
+        if(photoOfTheDay.hdurl === prevUrl){
+            setImgLoading(false);
+        }
+        else{
+            setImgLoading(true);
+        }
+
         // TODO: Add year traversal and leap year calculation
 
         if(direction === 'left'){
@@ -81,10 +90,13 @@ const Carousel = (props) => {
                 setDay(day + 1);
             }
         }
+
+        // Make the current url the previous url
+        prevUrl = photoOfTheDay.url;
     }
 
     // If we haven't received our data
-    if(!photoOfTheDay) return <h3>Loading...</h3>;
+    if(!photoOfTheDay || imgLoading) return <h3>Loading...</h3>;
 
     return (
         <div>
