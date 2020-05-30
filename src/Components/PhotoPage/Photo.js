@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import ExplanationCard from './ExplanationCard';
@@ -9,6 +9,22 @@ const StyledPhoto = styled.img`
 `;
 
 const Photo = (props) => {
+    const [loading, setLoading] = useState(true);
+    const [source, setSource] = useState("");
+
+    useEffect(() => {
+        if(props.source === source){
+            setLoading(false);
+        }
+        else{
+            setLoading(true);
+        }
+
+        setSource(props.source);
+    },[loading, props.source, source]);
+
+    if(loading) return <h3>Loading...</h3>;
+
     return (
         <div className="photo">
             <StyledPhoto src={props.source} alt={props.explanation} />
